@@ -1,0 +1,29 @@
+<ion-view title="Attendy" hide-back-button="true">
+    
+<ion-content>
+<br>
+<br>
+<br>
+<center>
+<img src="http://www.iconshock.com/img_vista/FONTS/education/jpg/attendance_icon.jpg">
+</center>
+    <div class="list list-inset">
+        <div>
+            <label class="item item-input">
+                <input id="email" data-ng-model="user.email" type="email" placeholder="Email" return-close="true">
+            </label>
+
+            <label class="item item-input">
+                <input id="password" data-ng-model="user.password" type="password" placeholder="Password" return-close="true">
+            </label>
+
+        </div>
+
+
+        <button style="margin-top: 20px;height: 60px;" class="button button-full button-positive" ng-click="loginUser(user)">
+            Login
+        </button>
+    </div>
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view title="Classes">
+    <ion-nav-buttons side="right">
+        <button menu-toggle="right" class="button button-icon icon ion-ios-gear-outline"></button>
+    </ion-nav-buttons>
+<ion-content>
+<br>
+<br>
+<br>
+        <ion-refresher
+                pulling-text="Pull to refresh"
+                refreshing-text="Loading..."
+                refreshing-icon="ion-loading-c"
+                pulling-icon="ion-ios7-arrow-thin-down"
+                on-refresh="reloadList()">
+        </ion-refresher>
+   <div class="list" ng-repeat="c in classes">
+         <button ng-click="getStudents({{c.id}}, {{c.batch.id}})" class="button button-block button-positive">
+           {{ c.batch.name }} {{ c.batch.session }} <span ng-if="c.batch.shift == 0">Morning</span>
+             <span ng-if="c.batch.shift == 1">Evening</span>
+       </button>
+   </div>
+    </ion-content>
+</ion-view>

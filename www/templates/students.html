@@ -1,0 +1,68 @@
+<ion-view title="Students">
+    <ion-nav-buttons side="right">
+        <button menu-toggle="right" class="button button-icon icon ion-ios-gear-outline"></button>
+    </ion-nav-buttons>
+<br>
+<br>
+<br>
+    <div class="calednar-bar bar bar-subheader" style="z-index: 99999;border: none;">
+        <div class="row no-margin">
+            <div class="col text-center" ng-repeat="item in weekDates">
+                <span>{{ item.day }}</span>
+                <br>
+                <span ng-class="{'make-circle': item.circle}" class="{{item.class}}" ng-click="selectDate(item.dateString)" style="font-size:1.2em;padding-right: 4px;">{{item.date}}</span>
+            </div>
+        </div>
+        <div class="text-center " style="padding-bottom:5px;"><b>{{selectedDate.toDateString()}}</b></div>
+
+    </div>
+
+     <ion-content has-bouncing="false" on-swipe-right="onSwipeRight()" on-swipe-left="onSwipeLeft()">
+
+
+
+         <p>&nbsp;</p>
+         <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+    <ion-refresher
+                pulling-text="Pull to refresh"
+                refreshing-text="Loading..."
+                refreshing-icon="ion-loading-c"
+                pulling-icon="ion-ios7-arrow-thin-down"
+                on-refresh="reloadList()">
+        </ion-refresher>
+
+    <div ng-if="(attendance).length == 0" class="list check_list" ng-repeat="s in students">
+        <a class="item item-thumbnail-left" >
+          <img src="http://www.iconshock.com/img_vista/FONTS/education/jpg/attendance_icon.jpg">
+          <h2>{{ s.name }}</h2>
+          <p>Roll No : {{ s.rollno }}</p>
+        </a>
+          <li class="check-list">
+             <label class="checkbox" style="float:right; margin-top:0;">
+               <input type="checkbox"  checklist-model="student_ids.ids" checklist-value="s.id"   style="z-index:999999999999999999;">
+             </label>
+           </li>
+    </div>
+    <div ng-if="(attendance).length > 0"  class="list check_list" ng-repeat="s in attendance">
+        <a class="item item-thumbnail-left" >
+          <img src="http://www.iconshock.com/img_vista/FONTS/education/jpg/attendance_icon.jpg">
+          <h2>{{ s.student.name }}</h2>
+          <p>Roll No : {{ s.student.rollno }}</p>
+        </a>
+          <li class="check-list">
+             <label class="checkbox" style="float:right; margin-top:0;">
+               <input type="checkbox" ng-disabled="true" checked="checked" style="z-index:999999999999999999;">
+             </label>
+           </li>
+    </div>
+    <button ng-if="(students).length > 0 && (attendance).length == 0 && selectedDate.toDateString() == today.toDateString()" style="margin-top: 20px;height: 60px;" class="button button-full button-positive" ng-click="markComplete()">
+            Save Attendance
+    </button>
+    </ion-content>
+    <div ng-if="(students).length == 0">
+        No Students Found
+    </div>
+</ion-view>

@@ -1,0 +1,50 @@
+<style type="text/css">
+    .myclass{
+
+        float:left;
+    }
+</style>
+<ion-view title="Students">
+    <ion-nav-buttons side="right">
+        <button menu-toggle="right" class="button button-icon icon ion-ios-gear-outline"></button>
+    </ion-nav-buttons>
+    <ion-content>
+<br>
+<br>
+<br><ion-refresher
+                pulling-text="Pull to refresh"
+                refreshing-text="Loading..."
+                refreshing-icon="ion-loading-c"
+                pulling-icon="ion-ios7-arrow-thin-down"
+                on-refresh="reloadList()">
+        </ion-refresher>
+
+    <div ng-if="(attendance).length == 0" class="list check_list" ng-repeat="s in students">
+        <a class="item item-thumbnail-left" >
+          <img src="http://www.iconshock.com/img_vista/FONTS/education/jpg/attendance_icon.jpg">
+          <h2>{{ s.name }}</h2>
+          <p>Roll No : {{ s.rollno }}</p>
+        </a>
+          <li class="check-list">
+             <label class="checkbox" style="float:right; margin-top:0;">
+               <input type="checkbox"  checklist-model="student_ids.ids" checklist-value="s.id"   style="z-index:999999999999999999;">
+             </label>
+           </li>
+    </div>
+    <div ng-if="(attendance).length > 0" class="list check_list" ng-repeat="s in students">
+        <a class="item item-thumbnail-left" >
+          <img src="http://www.iconshock.com/img_vista/FONTS/education/jpg/attendance_icon.jpg">
+          <h2>{{ s.name }}</h2>
+          <p>Roll No : {{ s.rollno }}</p>
+        </a>
+          <li class="check-list">
+             <label class="checkbox" style="float:right; margin-top:0;">
+               <input type="checkbox" checked="checked" style="z-index:999999999999999999;">
+             </label>
+           </li>
+    </div>
+    </ion-content>
+    <div ng-if="(students).length == 0">
+        No Students Found
+    </div>
+</ion-view>

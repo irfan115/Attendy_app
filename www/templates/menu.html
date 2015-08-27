@@ -1,0 +1,49 @@
+<style>
+    .menu .scroll-content {
+        margin-top: 0px !important;
+    }
+    .item-complex .item-content, .item-radio .item-content {
+        position: relative;
+        z-index: 2;
+        padding: 42px 49px 16px 16px;
+        border: none;
+        background-color: white;
+    }
+</style>
+<ion-side-menus>
+
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+      <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-right-left"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="right">
+    <header class="bar bar-stable">        
+        <h1 class="title" style="float: right;">Menu</h1>
+    </header>
+    <ion-content class="has-header dark">
+      <ion-list>
+
+          <ion-item nav-clear menu-close href='#/app/classes'>
+              <span style="color: #46a;"> <i class="icon ion-home" style="color: #46a;"></i> &nbsp; Home</span>
+          </ion-item>
+
+          <ion-item  nav-clear menu-close href='#/app/attendance'>
+             <span style="color: #46a;"> <i class="icon ion-android-create" style="color: #46a;"></i> &nbsp; Attendance </span>
+          </ion-item>
+
+          <ion-item href="#" nav-clear menu-close data-ng-click="logOut()">
+              <span style="color: #46a;"> <i class="icon ion-power" style="color: #46a;"></i> &nbsp; Logout</span>
+          </ion-item>
+
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
